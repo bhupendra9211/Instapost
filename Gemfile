@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby "3.3.0"
 
+gem "image_processing", ">= 1.2"
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.20'
 
