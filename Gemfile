@@ -1,6 +1,8 @@
 source "https://rubygems.org"
 
 ruby "3.3.0"
+#Adding a simple form
+gem 'simple_form', '~> 5.3'
 
 gem "image_processing", ">= 1.2"
 
