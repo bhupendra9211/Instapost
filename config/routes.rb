@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   # get 'sessions/create'
   # get 'sessions/destroy'
 
-  root 'home#index'
-
+  # root 'home#index'
+  root 'posts#index'
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
   get 'signup', to: 'users#new', as: 'signup'
