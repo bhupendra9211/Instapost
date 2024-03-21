@@ -5,3 +5,7 @@
   <%= f.input :description %>
   <%= f.submit 'Post' %>
 <% end %>
+
+<% if current_user.present? %>
+<%= link_to 'Logout', logout_path, method: :delete, data: {turbo_confirm: "Are you sure?","turbo-method": :delete} %>
+<% end %>

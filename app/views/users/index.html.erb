@@ -12,3 +12,7 @@
 </div>
 
 <%= link_to "New user", new_user_path %>
+
+<% if current_user.present? %>
+<%= link_to 'Logout', logout_path, method: :delete, data: {turbo_confirm: "Are you sure?","turbo-method": :delete} %>
+<% end %>
