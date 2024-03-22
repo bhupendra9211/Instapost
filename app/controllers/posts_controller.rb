@@ -6,6 +6,7 @@ class PostsController < ApplicationController
         #Now the new post will render
         @posts = Post.all.order('created_at DESC')
     end
+
     def new
         @post = Post.new
     end
@@ -17,13 +18,13 @@ class PostsController < ApplicationController
     # end
 
     def create
-        @post = current_user.posts.create(post_params)
-        if @post.valid?
-          redirect_to root_path
-        else
-          render :new, status: :unprocessable_entity
-        end
+      @post = current_user.posts.create(post_params)
+      if @post.valid?
+        redirect_to root_path
+      else
+        render :new, status: :unprocessable_entity
       end
+    end
     #This method is for updating the post, it perfrom get action
     def edit
       @post = Post.find(params[:id])
@@ -54,13 +55,13 @@ class PostsController < ApplicationController
     #     redirect_to root_path
     #   end
     # end
+    def post_params
+      params.require(:post).permit(:user_id, :photo, :description)
+    end
     def is_owner?
       redirect_to root_path if Post.find(params[:id]).user != current_user
     end
       
-    def post_params
-      params.require(:post).permit(:user_id, :photo, :description)
-    end
 
 end
 

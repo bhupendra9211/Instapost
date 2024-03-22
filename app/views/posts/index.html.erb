@@ -1,13 +1,16 @@
 <% @posts.each do |post| %>
-  <%= image_tag post.user.photo if post.user.photo.attached? %>
-  <%= post.user.email.split('@').first %>
-  <%= image_tag post.photo %>
-  <%= post.description %>
+  <div class='pb-16'>
+    <div><%= image_tag post.user.photo if post.user.photo.attached? %></div>
+    <div class="font-bold text-xl mb-2"><%= post.user.email.split('@').first %></div>
+    <div><%= image_tag post.photo, class: 'md:max-w-[75%] mb-2' %></div>
+    <div class="px-2"><%= post.description %></div>
 
-  <% if post.user == current_user %>
-    <div class="mt-4">
-      <%= link_to 'Edit Post', edit_post_path(post.id), class: 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' %>
-      <%= link_to 'Delete Post', post_path(post.id), method: :delete, class: 'text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800', data: {turbo_confirm: "Are you sure?","turbo-method": :delete}%>
-    </div>
-  <% end %>
+    <% if post.user == current_user %>
+      <div class="mt-4">
+        <%= link_to 'Edit Post', edit_post_path(post.id), class: 'text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800' %>
+        <%= link_to 'Delete Post', post_path(post.id), method: :delete, class: 'text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 focus:outline-none dark:focus:ring-red-800', data: {turbo_confirm: "Are you sure?","turbo-method": :delete} %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
+
