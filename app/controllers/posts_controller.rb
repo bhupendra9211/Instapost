@@ -1,7 +1,10 @@
 class PostsController < ApplicationController
     before_action :authenticate_user, only: [:new, :create]
+    before_action :is_owner?, only: [:edit, :update, :destroy]
     def index
-        @posts = Post.all
+        # @posts = Post.all
+        #Now the new post will render
+        @posts = Post.all.order('created_at DESC')
     end
     def new
         @post = Post.new
@@ -21,11 +24,43 @@ class PostsController < ApplicationController
           render :new, status: :unprocessable_entity
         end
       end
-      
-      private
-      
-      def post_params
-        params.require(:post).permit(:user_id, :photo, :description)
+    #This method is for updating the post, it perfrom get action
+    def edit
+      @post = Post.find(params[:id])
+    end
+
+    # This is for Updading the post,It will call after edit method is called
+    def update
+      @post = Post.find(params[:id])
+      @post.update(post_params)
+      if @post.valid?
+        redirect_to root_path
+      else
+        render :edit, status: :unprocessable_entity
       end
+    end
+
+    # This is used for deleting the post, it perform delete action
+    def destroy
+      @post = Post.find(params[:id])
+      @post.destroy
+      redirect_to root_path
+    end
+      
+    private
+
+    # def is_owner?
+    #   if Post.find(params[:id]).user != current_user
+    #     redirect_to root_path
+    #   end
+    # end
+    def is_owner?
+      redirect_to root_path if Post.find(params[:id]).user != current_user
+    end
+      
+    def post_params
+      params.require(:post).permit(:user_id, :photo, :description)
+    end
+
 end
 

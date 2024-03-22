@@ -8,5 +8,12 @@ module.exports = {
   ],
   plugins: [
     require('flowbite/plugin')
-  ]
+  ],
+  theme: {
+    'fontFamily' : {
+      'open-sans' : ['Open Sans', 'sans-serif'],
+      'dosis' : ['Dosis', 'sans-serif'],
+      'pacifico' : ['Pacifico', 'sans-serif']
+    }
+  }
 }
