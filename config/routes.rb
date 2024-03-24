@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new', as: 'login'
   delete 'logout', to: 'sessions#destroy', as: 'logout'
   resources :posts
+
+  resources :posts do
+    resources :comments 
+  end
   # get 'logout'=>'home#index'
   # Define yoppur application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
