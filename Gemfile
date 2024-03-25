@@ -4,6 +4,9 @@ ruby "3.3.0"
 #Adding a simple form
 gem 'simple_form', '~> 5.3'
 
+#Adding for vatable
+gem 'acts_as_votable', '~> 0.14.0'
+
 gem "image_processing", ">= 1.2"
 
 gem 'bcrypt', '~> 3.1', '>= 3.1.20'
