@@ -4,12 +4,14 @@ class PostsController < ApplicationController
     def index
         # @posts = Post.all
         #Now the new post will render
-        @posts = Post.all.order('created_at DESC')
+        @posts = Post.all.order('created_at DESC').includes(:user, comments: :user)
+
     end
 
     def new
         @post = Post.new
     end
+
     #Redirecting the user in the controller methods.........
     # def create
     #     @post = Post.find(params[:id])
@@ -47,6 +49,8 @@ class PostsController < ApplicationController
       @post.destroy
       redirect_to root_path
     end
+
+
       
     private
 

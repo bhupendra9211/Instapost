@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   resources :posts
 
   resources :posts do
-    resources :comments 
+    resources :comments
+    resources :upvotes, only: :create, controller: 'posts/upvotes'
+    resources :downvotes, only: :create, controller: 'posts/downvotes'
   end
   # get 'logout'=>'home#index'
   # Define yoppur application routes per the DSL in https://guides.rubyonrails.org/routing.html
