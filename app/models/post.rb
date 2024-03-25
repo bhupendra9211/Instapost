@@ -5,6 +5,11 @@ class Post < ApplicationRecord
   has_one_attached :photo
   validates :photo, :description, :user_id, presence: true
   acts_as_votable
+  delegate :email, to: :user, prefix: true
+  def user_email
+    user.email
+  end
+
 end
 
 

@@ -26,7 +26,8 @@
     
     <% post.comments.each do |comment| %>
       <div class="mt-4">
-        <p><%= link_to comment.user.email.split('@').first, user_path(comment.user.id), class: 'font-bold' %> <%= comment.description %></p>
+        <p><%= link_to post.user_email.split('@').first, user_path(comment.user.id), class: 'font-bold' %> <%= comment.description %></p>
+        <p><%= link_to comment.user_email.split('@').first, user_path(comment.user.id), class: 'font-bold' %> <%= comment.description %></p>
       </div>   
     <% end %>
   </div>
