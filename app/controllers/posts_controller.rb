@@ -26,6 +26,7 @@ class PostsController < ApplicationController
       else
         render :new, status: :unprocessable_entity
       end
+
     end
     #This method is for updating the post, it perfrom get action
     def edit
